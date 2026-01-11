@@ -1,0 +1,14 @@
+vendor/
+
+public/images/works/
+public/favicon.png
+public/images/favicon.ico
+public/webstat/
+
+tmp/
+
+composer.lock
+
+.idea
+.git
+.env
