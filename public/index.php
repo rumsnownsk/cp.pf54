@@ -1,4 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-echo 'helll';die;
+require_once "../vendor/autoload.php";
+
+require_once "../config/config.php";
+require_once "../helpers/helpers.php";
+
+$app = new \PHPFrw\Application();
+require_once CONFIG.'/routes.php';
+
+$app->run();
