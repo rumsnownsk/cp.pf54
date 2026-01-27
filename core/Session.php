@@ -8,8 +8,10 @@ class Session
 {
     public function __construct()
     {
-        session_set_cookie_params(86400);
-        session_start();
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_set_cookie_params(86400);
+            session_start();
+        }
     }
 
     public function set($key, $value): void

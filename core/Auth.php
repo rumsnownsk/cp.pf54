@@ -1,8 +1,6 @@
 <?php
 
-
 namespace PHPFrw;
-
 
 class Auth
 {
@@ -38,7 +36,10 @@ class Auth
 
     public static function isAuth(): bool
     {
-        return session()->has('user');
+        if (session() !== false){
+            return session()->has('user');
+        }
+        return false;
     }
 
     public static function getRole(): int

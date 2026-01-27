@@ -1,22 +1,27 @@
-<div class="container">
     <div class="paginationField"></div>
 
-    <table class="table admin_allWorks" id="table_works">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">photo</th>
-            <th scope="col">Название объекта</th>
-            <th scope="col" class="publishCol">Статус</th>
-            <th scope="col">Тип объекта</th>
-            <th scope="col">Завершено</th>
-            <th scope="col">Удалить</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="card">
+        <h3><i class="fas fa-tasks" style="margin-right: 15px;"></i>Список объектов:</h3>
+        <div class="card-content">
+            <table class="" id="table_works">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Фото</th>
+                    <th scope="col">Название объекта</th>
+                    <th scope="col" class="publishCol">На сайте</th>
+                    <th scope="col">Тип объекта</th>
+                    <th scope="col">Завершено</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
     <div class="paginationField"></div>
-</div>
 

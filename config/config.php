@@ -3,12 +3,22 @@ define("HOST", $_SERVER['HTTP_HOST']);
 define("ROOT", dirname(__DIR__));
 
 $dotenv = Dotenv\Dotenv::createImmutable(ROOT);
-$dotenv->safeLoad();
+$dotenv->load();
 
-define("APP_DEBUG", (bool)$_ENV['APP_DEBUG']);
+try {
+    foreach ($_ENV as $key => $value) {
+        if (!defined($key)) {
+            define($key, $value);
+        }
+    }
+} catch (\Exception $e) {
+    echo'File .env do not configured or not exist!'; die;
 
-//dd(gettype(APP_DEBUG));
-if (APP_DEBUG === true) {
+}
+
+$app_debug = filter_var($_ENV['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN);
+
+if ($app_debug) {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 }
@@ -44,7 +54,7 @@ const PAGINATION_SETTINGS = [
 ];
 
 $whoops = new \Whoops\Run;
-if (APP_DEBUG) {
+if ($app_debug) {
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler())->register();
 } else {
     $whoops->pushHandler(new \Whoops\Handler\CallbackHandler(function (Throwable $e){
@@ -53,7 +63,7 @@ if (APP_DEBUG) {
             . PHP_EOL."  Error: {$e->getMessage()};"
             . PHP_EOL."  File: {$e->getFile()};"
             . PHP_EOL. "  Line: {$e->getLine()};",3, ERROR_LOGS);
-        abort('Some error', 500);
+        abort($e->getMessage(), 500);
     }))->register();
 }
 $whoops->register();

@@ -1,28 +1,39 @@
-<div class="container">
-    <h1><?= $title ?? ''; ?></h1>
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <form action="<?= base_url('/login');?>" method="post" class="ajax-form">
+<div class="wrap">
+    <div class="card">
+        <div class="card_header">
+            <h1><?= $title ?? ''; ?></h1>
+        </div>
 
-                <?= get_csrf_token(); ?>
+        <form action="<?= base_url('/login'); ?>" method="post" class="ajax-form">
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control <?= get_validation_class('email')?>" id="email" placeholder="email"  value="<?= old('email') ?>">
+            <?= get_csrf_token(); ?>
+
+            <div class="mb-3">
+                <label for="email" class="field">Email</label>
+                <div class="field-inner">
+                    <span class="field-icon">📧</span>
+                    <input name="email" type="email" <?= get_validation_class('email') ?>
+                    id="email"
+                    placeholder="your@mail.com" value="<?= old('email') ?>">
                     <?= get_errors('email'); ?>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">password</label>
-                    <input name="password" type="password" class="form-control <?= get_validation_class('password')?>" id="password" placeholder="password" value="<?= old('password') ?>">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="field">Password</label>
+                <div class="field-inner">
+                    <span class="field-icon">🔒</span>
+                    <input name="password" type="password" <?= get_validation_class('password') ?>
+                    id="password" placeholder="Введите пароль" value="<?= old('password') ?>">
                     <?= get_errors('password'); ?>
                 </div>
+            </div>
 
-                <button type="submit" class="btn btn-warning">Login</button>
+            <button type="submit" class="btn-primary" id="loginBtn">
+                <span>Войти</span>
+            </button>
 
-            </form>
-            <?= session()->remove('form_data'); ?>
-            <?= session()->remove('form_errors'); ?>
-        </div>
+        </form>
     </div>
+
 </div>

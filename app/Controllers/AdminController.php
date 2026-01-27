@@ -11,17 +11,16 @@ class AdminController extends BaseController
 {
     public function __construct()
     {
-//        if (!Auth::isAuth()) {
+        if (!Auth::isAuth()) {
 //            session()->setFlash('error', 'нужно зарегаться');
-//            response()->redirect(base_url('/'));
-//        } else if (Auth::isAuth() && Auth::getRole() == 0) {
-//            session()->setFlash('error', 'Доступ для вас закрыт');
-//            session()->remove('user');
-//            response()->redirect(base_url('/'));
-//        }
-        $this->changeLayout('adminLayout');
+            response()->redirect(base_url('/login'));
+        } else if (Auth::isAuth() && Auth::getRole() == 0) {
+            session()->setFlash('error', 'Доступ для вас закрыт');
+            session()->remove('user');
+            response()->redirect(base_url('/'));
+        }
+        $this->changeLayout('cpLayout');
     }
-
 
     public function index(): string
     {

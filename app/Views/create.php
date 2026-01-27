@@ -74,7 +74,6 @@
 
             <div class="form-group">
                 <button class="btn btn-success" type="submit">Сохранить</button>
-                <a href="/admin" class="btn btn-info" style="margin-left: 50px">На главную</a>
             </div>
         </form>
         <?= session()->remove('form_data'); ?>

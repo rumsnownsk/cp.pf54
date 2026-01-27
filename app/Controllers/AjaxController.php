@@ -152,19 +152,24 @@ class AjaxController extends BaseController
             ? ''
             : "limit {$pagination->perPage()} offset {$pagination->getOffset()}";
 
+//        join publish on works.publish=publish.publish_id
+//        publish.title as publish,
+
         $works = db()->query("
-            select works.id, works.title, works.photoName, works.timeCreate,
-                   publish.title as publish,
+            select works.id, works.title, works.photoName, works.publish, works.timeCreate,
                    categories.title as category
             from works
-            join publish on works.publish=publish.publish_id
             join categories on works.category_id=categories.id
             {$strSearch}
             order by works.id DESC
             {$slice}
             ")->get();
+
         foreach ($works as $k => $v) {
             $works[$k]['timeCreate'] = $this->date_ru($v['timeCreate']);
+            $works[$k]['publish'] = (int)$works[$k]['publish'] === 1
+                ? "<i class='fas fa-check fa-2x' style='color: #537917;'></i>"
+                : "<i class='fas fa-ban' style='color: #FF0000;'></i>";
         }
 
         echo json_encode([

@@ -15,6 +15,7 @@ class Router
         protected Response $response
     )
     {
+//        dd($this->request, $this->response);
     }
 
     /**
