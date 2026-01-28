@@ -4,7 +4,10 @@
             <td><?= $work['id'] ?></td>
             <td class="image_td">
                 <a href="/build/<?= $work['id'] ?>">
-                    <img src="/images/works<?= $work['photoName'] ?>" alt="паспорт фасадов">
+                    <img src='/images/works<?= $work['photoName'] ?>'
+                         alt="паспорт фасадов"
+                         loading="lazy"
+                    >
                 </a>
 
             </td>
