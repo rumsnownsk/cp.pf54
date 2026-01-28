@@ -1,8 +1,5 @@
 <?php
-
-
 namespace PHPFrw;
-
 
 use Dotenv\Dotenv;
 
