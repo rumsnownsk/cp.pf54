@@ -1,8 +1,6 @@
 <?php
 
-
 namespace PHPFrw;
-
 
 class Session
 {
@@ -50,5 +48,4 @@ class Session
         };
         return $value ?? $default;
     }
-
 }

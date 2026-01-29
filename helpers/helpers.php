@@ -237,3 +237,16 @@ try {
     abort('Contact with administrator', 500);
     exit(1);
 }
+
+#[NoReturn] function catchInc($e, $msgError='Error'): void
+{
+    if (getenv('APP_DEBUG')) {
+        ec($e->getMessage(), 'red');
+        die;
+    }
+    error_log(PHP_EOL."______ [" . date('Y-m-d H:i:s'). "]______"
+        . PHP_EOL."  {$msgError}: {$e->getMessage()};"
+        . PHP_EOL."  File: {$e->getFile()};"
+        . PHP_EOL. "  Line: {$e->getLine()};",3, ERROR_LOGS);
+    http_response_code(500);
+}

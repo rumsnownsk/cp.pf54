@@ -18,9 +18,7 @@ $app->router->post("/build/create", [\App\Controllers\AdminController::class, 'c
 $app->router->get("/build/(?P<id>[0-9]+)", [\App\Controllers\AdminController::class, 'build']);
 $app->router->post("/build/(?P<id>[0-9]+)", [\App\Controllers\AdminController::class, 'store']);
 $app->router->get("/build/(?P<id>[0-9]+)/remove", [\App\Controllers\AdminController::class, 'remove']);
-$app->router->get("/test", function (){
 
-});
 
 
 $app->router->add('/api/v1/test', function (){
@@ -30,15 +28,15 @@ $app->router->add('/api/v1/test', function (){
     ]);
 }, ['get', 'post', 'put'])->withoutCsrfToken();
 
-$app->router->get('/api/v1/categories', [App\Controllers\Api\V1\CategoryController::class, 'index']);
-$app->router->get('/api/v1/category/(?P<slug>[a-z0-9-]+)', [App\Controllers\Api\V1\CategoryController::class, 'view']);
+//$app->router->get('/api/v1/categories', [App\Controllers\Api\V1\CategoryController::class, 'index']);
+//$app->router->get('/api/v1/category/(?P<slug>[a-z0-9-]+)', [App\Controllers\Api\V1\CategoryController::class, 'view']);
 
 
 
 
-$app->router->get('/allWorks', [AjaxController::class, 'allWorks']);
-$app->router->get('/loadMore', [AjaxController::class, 'loadMore']);
-$app->router->get('/worksByCategoryId', [AjaxController::class, 'worksByCategoryId']);
+//$app->router->get('/allWorks', [AjaxController::class, 'allWorks']);
+//$app->router->get('/loadMore', [AjaxController::class, 'loadMore']);
+//$app->router->get('/worksByCategoryId', [AjaxController::class, 'worksByCategoryId']);
 $app->router->post('/searchWorks', [AjaxController::class, 'searchWorks'])->withoutCsrfToken();
 $app->router->get('/tBodyWorks', [AjaxController::class, 'tBodyWorks']);
 

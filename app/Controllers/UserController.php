@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use JetBrains\PhpStorm\NoReturn;
 use PHPFrw\Auth;
 use PHPFrw\Pagination;
 
@@ -36,7 +37,7 @@ class UserController extends BaseController
 //        ]);
 //    }
 
-    public function login()
+    public function login(): string|\PHPFrw\View
     {
 //        $credential = [
 //            'name'=> 'admin1',
@@ -54,7 +55,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function auth()
+    #[NoReturn] public function auth(): void
     {
         $model = new User();
         $model->loadData();
@@ -116,7 +117,8 @@ class UserController extends BaseController
 //        response()->redirect('/register');
 //    }
 
-    public function logout(){
+    public function logout(): void
+    {
         unset($_SESSION['user']);
         response()->redirect(base_url('/'));
     }
